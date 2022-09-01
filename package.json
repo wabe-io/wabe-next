@@ -37,11 +37,24 @@
     "chai-datetime": "^1.7.0",
     "madge": "^5.0.1",
     "mocha": "^8.1.1",
+    "next": "12",
     "prettier": "^2.7.1",
     "ramda": "^0.27.1",
     "ts-mocha": "^7.0.0",
     "ts-node": "^9.0.0",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "@types/react": "^18.0.18",
+    "@types/react-dom": "^18.0.6",
+    "@types/node": "^18.7.14",
+    "@types/node-cron": "^2.0.3"
   },
-  "dependencies": {}
+  "peerDependencies": {
+    "next": "12"
+  },
+  "dependencies": {
+    "ts-decoder": "^1.0.0",
+    "wabe-ts": "^0.5.0"
+  }
 }
