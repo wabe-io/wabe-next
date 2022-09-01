@@ -1815,10 +1815,10 @@ util-deprecate@^1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-wabe-ts@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/wabe-ts/-/wabe-ts-0.5.0.tgz#080741253b276cc7e80bbc913dbc6d48036ffafd"
-  integrity sha512-wVJ0szqx6dEtqThYITobhoMo8JDaCgqMUJvaQrADF0+UbW6LzvSdBHIwMfaM9NTNpVnVl/SEfFLC7BGXQH/LVg==
+wabe-ts@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/wabe-ts/-/wabe-ts-1.0.0.tgz#769ea2c07964bdb6504d67f8da4f403600c06067"
+  integrity sha512-otxHCu731D8RZi1Rn2oMwkdd1b6Lwbn+U3fX3ynuvwzhNf24SIxcZZOUi5m21qRdtQgxBwWGPbaPll81ShNtyQ==
 
 walkdir@^0.4.1:
   version "0.4.1"
