@@ -1,0 +1,47 @@
+{
+  "name": "wabe-next",
+  "version": "0.1.0",
+  "description": "Wabe Next.js typescript utilities",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "./node_modules/.bin/ts-mocha -p ./tsconfig.json src/**/*.test.ts",
+    "build": "./node_modules/.bin/tsc",
+    "prettier": "prettier --check .",
+    "typecheck": "./node_modules/.bin/tsc --noEmit",
+    "circular-deps": "madge -c --extensions \"ts,tsx\" --ts-config=tsconfig.json src/",
+    "link": "npm run build && cd dist && npm link",
+    "verify": "yarn typecheck && yarn circular-deps && yarn prettier && yarn test",
+    "prepublishOnly": "yarn verify && yarn build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wabe-io/wabe-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/wabe-io/wabe-next/issues"
+  },
+  "homepage": "https://github.com/wabe-io/wabe-next",
+  "author": "Hernán Pentimalli <h.pentimalli+wabenext@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "next"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.2.12",
+    "@types/chai-datetime": "^0.0.33",
+    "@types/mocha": "^8.0.3",
+    "@types/ramda": "^0.27.14",
+    "chai": "^4.2.0",
+    "chai-datetime": "^1.7.0",
+    "madge": "^5.0.1",
+    "mocha": "^8.1.1",
+    "prettier": "^2.7.1",
+    "ramda": "^0.27.1",
+    "ts-mocha": "^7.0.0",
+    "ts-node": "^9.0.0",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {}
+}
