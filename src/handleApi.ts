@@ -33,13 +33,13 @@ export const handleApiFactory =
           const result = await handler({ req, res });
 
           if (result != null) {
-            res.status(200).json(result);
+            res.status(HttpStatusCodes.Ok).json(result);
           } else {
-            res.end();
+            res.status(HttpStatusCodes.NoContent).end();
           }
-        }
 
-        return;
+          return;
+        }
       }
 
       // Method not allowed
