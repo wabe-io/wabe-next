@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { HttpStatusCodes } from 'wabe-ts';
-import { HttpError } from './httpError';
+import { HttpStatusCodes, HttpError } from 'wabe-ts';
 
 export type ApiHandler<O> = (params: {
   req: NextApiRequest;

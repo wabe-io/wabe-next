@@ -1,6 +1,8 @@
-import { HttpStatusCodes } from 'wabe-ts';
-import { HttpError } from './httpError';
+import { HttpStatusCodes, HttpError } from 'wabe-ts';
 
+/**
+ * @deprecated use wabe-ts UnauthorizedError
+ */
 export class UnauthorizedError extends HttpError {
   constructor(
     msg?: string,

@@ -1,5 +1,10 @@
+/* eslint deprecation/deprecation: 0 */
+
 import { HttpStatusCodes, objectHasProp } from 'wabe-ts';
 
+/**
+ * @deprecated use wabe-ts HttpError
+ */
 export class HttpError extends Error {
   public readonly type = 'http_error';
 

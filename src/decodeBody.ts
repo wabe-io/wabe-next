@@ -1,6 +1,5 @@
 import type { NextApiRequest } from 'next';
-import { HttpStatusCodes } from 'wabe-ts';
-import { HttpError } from './httpError';
+import { HttpStatusCodes, HttpError } from 'wabe-ts';
 import { Decoder } from 'ts-decoder';
 
 export const decodeBody =

@@ -1,6 +1,8 @@
-import { HttpStatusCodes } from 'wabe-ts';
-import { HttpError } from './httpError';
+import { HttpStatusCodes, HttpError } from 'wabe-ts';
 
+/**
+ * @deprecated use wabe-ts InternalServerError
+ */
 export class InternalServerError extends HttpError {
   constructor(
     msg?: string,
