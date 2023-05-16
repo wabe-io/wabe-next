@@ -31,9 +31,9 @@ export const handleApiFactory =
 
           const result = await handler({ req, res });
 
-          if (result != null) {
+          if (result !== undefined) {
             res.status(HttpStatusCodes.Ok).json(result);
-          } else {
+          } else if (!res.writableEnded) {
             res.status(HttpStatusCodes.NoContent).end();
           }
 
