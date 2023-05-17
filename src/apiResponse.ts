@@ -32,6 +32,6 @@ export const isApiResponse = <T>(input: unknown): input is ApiResponse<T> => {
     typeof input === 'object' &&
     input != null &&
     'type' in input &&
-    input.type === 'wabe-next-api-response'
+    (input as { type: string }).type === 'wabe-next-api-response'
   );
 };
