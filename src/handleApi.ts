@@ -1,10 +1,11 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { HttpStatusCodes, HttpError } from 'wabe-ts';
+import { ApiResponse, isApiResponse } from './apiResponse';
 
 export type ApiHandler<O> = (params: {
   req: NextApiRequest;
   res: NextApiResponse<O>;
-}) => Promise<O> | void;
+}) => Promise<O> | Promise<ApiResponse<O>> | void;
 
 export const handleApiFactory =
   (errorLogger: (error: unknown) => void) =>
@@ -31,9 +32,38 @@ export const handleApiFactory =
 
           const result = await handler({ req, res });
 
-          if (result !== undefined) {
+          // If handler responded with an ApiResponse object
+          if (isApiResponse(result)) {
+            if (result.setHeaders) {
+              for (const header of result.setHeaders) {
+                res.setHeader(header[0], header[1]);
+              }
+            }
+
+            if (result.contentType) {
+              res.setHeader('Content-Type', result.contentType);
+            }
+
+            if (result.status) {
+              res.status(result.status);
+            }
+
+            if (result.setCookies) {
+              throw new Error('Not implemented');
+            }
+
+            if (result.data) {
+              res.send(result.data);
+            }
+
+            res.end();
+          }
+          // If response was something else than undefined, we assume it is json
+          else if (result !== undefined) {
             res.status(HttpStatusCodes.Ok).json(result);
-          } else if (!res.writableEnded) {
+          }
+          // If response === undefined then check if response was closed
+          else if (!res.writableEnded) {
             res.status(HttpStatusCodes.NoContent).end();
           }
 
