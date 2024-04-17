@@ -7,7 +7,7 @@ import {
   ServerWorkersManifest,
   WORKERS,
 } from '../serverWorkerManager';
-import { DeferredSignal } from './deferred';
+import { DeferredSignal } from 'wabe-ts';
 
 const expect = chai.expect;
 

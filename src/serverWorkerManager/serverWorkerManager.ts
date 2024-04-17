@@ -5,7 +5,7 @@ import { WorkerInstance, WorkerInstanceState } from './workerInstance';
 import { RunMode } from './runMode';
 import { randomString } from './randomString';
 import { ServerWorkerExitCode } from './serverWorker';
-import { sleep } from './sleep';
+import { sleep } from 'wabe-ts';
 
 const BACKOFF_TIME = 5000;
 
