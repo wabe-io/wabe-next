@@ -45,13 +45,7 @@ export class ServerWorkerManager {
     settings: { [key: string]: string | undefined },
     optionals?: { onInitializationError?: (error: unknown) => void },
   ) {
-    const onInitializationError =
-      optionals?.onInitializationError ||
-      (() => {
-        if (process.env[NEXT_RUNTIME] === 'nodejs') {
-          process.exit();
-        }
-      });
+    const onInitializationError = optionals?.onInitializationError;
 
     try {
       const { config, blockManager, blockManagerUI, blockWeb } =
@@ -80,7 +74,7 @@ export class ServerWorkerManager {
       }
     } catch (e) {
       console.error(e);
-      onInitializationError(e);
+      onInitializationError && onInitializationError(e);
     }
   }
 
