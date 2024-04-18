@@ -1,5 +1,5 @@
-import { describe, it } from 'mocha';
-import * as chai from 'chai';
+import { describe, test } from '@jest/globals';
+
 import {
   ServerWorker,
   ServerWorkerExitCode,
@@ -9,14 +9,10 @@ import {
 } from '../serverWorkerManager';
 import { DeferredSignal } from 'wabe-ts';
 
-const expect = chai.expect;
-
 const NODE_ENV = 'NODE_ENV';
 
 describe('serverWorkerManager', () => {
-  it('can run a worker', async function () {
-    this.timeout(6000);
-
+  test('can run a worker', async function () {
     const signal = new DeferredSignal();
 
     const okWorker: ServerWorker = async () => {
@@ -31,6 +27,5 @@ describe('serverWorkerManager', () => {
     manager.startManager();
     await signal.promise;
     manager.stopManager();
-    expect(true).to.be.true;
-  });
+  }, 6000);
 });
