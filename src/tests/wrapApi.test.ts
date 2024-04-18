@@ -1,10 +1,7 @@
-import { describe, it } from 'mocha';
-import * as chai from 'chai';
-
-const expect = chai.expect;
+import { describe, expect, test } from '@jest/globals';
 
 describe('wrapApi', () => {
-  it('can do something', () => {
-    expect(true).to.be.true;
+  test('adds 1 + 2 to equal 3', () => {
+    expect(3).toBe(3);
   });
 });
