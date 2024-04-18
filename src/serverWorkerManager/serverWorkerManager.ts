@@ -9,6 +9,8 @@ import { sleep } from 'wabe-ts';
 
 const BACKOFF_TIME = 5000;
 
+const NEXT_RUNTIME = 'NEXT_RUNTIME';
+
 /**
  * Workers config
  *
@@ -46,7 +48,7 @@ export class ServerWorkerManager {
     const onInitializationError =
       optionals?.onInitializationError ||
       (() => {
-        if (settings[NODE_RUNTIME] === 'nodejs') {
+        if (process.env[NEXT_RUNTIME] === 'nodejs') {
           process.exit();
         }
       });
@@ -241,8 +243,6 @@ export class ServerWorkerManager {
   };
 }
 
-const NODE_RUNTIME = 'nodejs';
-
 export const registerWorkerManager = (manifest: ServerWorkersManifest) => {
   const nodeEnv = process.env.NODE_ENV;
   if (nodeEnv !== 'development' && nodeEnv !== 'production') {
@@ -259,8 +259,7 @@ export const registerWorkerManager = (manifest: ServerWorkersManifest) => {
 
   global.wabeWokerManager = new ServerWorkerManager(manifest, process.env);
 
-  const runtime = process.env['NEXT_RUNTIME'];
-  if (runtime === NODE_RUNTIME) {
+  if (process.env[NEXT_RUNTIME] === 'nodejs') {
     global.wabeWokerManager.startManager();
   }
 };
