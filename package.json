@@ -1,19 +1,61 @@
 {
   "name": "wabe-next",
-  "version": "6.0.2",
+  "version": "6.0.4",
   "description": "Wabe Next.js typescript utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src",
-    "test": "./node_modules/.bin/ts-mocha -p ./tsconfig.json src/**/*.test.ts",
-    "build": "./node_modules/.bin/tsc",
+    "test": "cross-env TS_NODE_COMPILER_OPTIONS='{\"module\": \"commonjs\" }' mocha -r ts-node/register 'src/tests/**/*.ts'",
+    "build": "tsup",
     "prettier": "prettier --check .",
     "typecheck": "./node_modules/.bin/tsc --noEmit",
     "circular-deps": "madge -c --extensions \"ts,tsx\" --ts-config=tsconfig.json src/",
     "link": "npm run build && cd dist && npm link",
     "verify": "yarn typecheck && yarn circular-deps && yarn prettier && yarn lint && yarn test",
     "prepublishOnly": "yarn verify && yarn build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./session": {
+      "types": "./dist/session/index.d.ts",
+      "require": "./dist/session/index.js",
+      "import": "./dist/session/index.js",
+      "default": "./dist/session/index.js"
+    },
+    "./session/cookies": {
+      "types": "./dist/session/indexSessionCookie.d.ts",
+      "require": "./dist/session/indexSessionCookie.js",
+      "import": "./dist/session/indexSessionCookie.js",
+      "default": "./dist/session/indexSessionCookie.js"
+    },
+    "./session/memory": {
+      "types": "./dist/session/indexSessionMemory.d.ts",
+      "require": "./dist/session/indexSessionMemory.js",
+      "import": "./dist/session/indexSessionMemory.js",
+      "default": "./dist/session/indexSessionMemory.js"
+    },
+    "./session/redis": {
+      "types": "./dist/session/indexSessionRedis.d.ts",
+      "require": "./dist/session/indexSessionRedis.js",
+      "import": "./dist/session/indexSessionRedis.js",
+      "default": "./dist/session/indexSessionRedis.js"
+    },
+    "./server-worker": {
+      "types": "./dist/serverWorkerManager/index.d.ts",
+      "require": "./dist/serverWorkerManager/index.js",
+      "import": "./dist/serverWorkerManager/index.js",
+      "default": "./dist/serverWorkerManager/index.js"
+    }
   },
   "repository": {
     "type": "git",
@@ -30,9 +72,9 @@
     "next"
   ],
   "devDependencies": {
-    "@types/chai": "^4.2.12",
-    "@types/chai-datetime": "^0.0.33",
-    "@types/mocha": "^10.0.1",
+    "@types/chai": "^4.3.14",
+    "@types/chai-datetime": "^0.0.39",
+    "@types/mocha": "^10.0.6",
     "@types/node": "20.5.0",
     "@types/node-cron": "^2.0.3",
     "@types/ramda": "^0.27.14",
@@ -41,12 +83,13 @@
     "@types/sinon": "^10.0.16",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
-    "chai": "^4.2.0",
+    "chai": "^5.1.0",
     "chai-datetime": "^1.7.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.47.0",
     "eslint-plugin-deprecation": "^1.3.2",
     "madge": "^6.1.0",
-    "mocha": "^10.2.0",
+    "mocha": "^10.4.0",
     "next": "^14.2.0",
     "prettier": "^3.0.2",
     "ramda": "^0.27.1",
@@ -54,8 +97,8 @@
     "react-dom": "18.2.0",
     "redis": "^4.6.13",
     "sinon": "^15.2.0",
-    "ts-mocha": "^10.0.0",
-    "ts-node": "^9.0.0",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
     "typescript": "5.1.6"
   },
   "peerDependencies": {

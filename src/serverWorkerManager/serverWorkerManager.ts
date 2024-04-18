@@ -46,7 +46,9 @@ export class ServerWorkerManager {
     const onInitializationError =
       optionals?.onInitializationError ||
       (() => {
-        process.exit();
+        if (settings[NODE_RUNTIME] === 'nodejs') {
+          process.exit();
+        }
       });
 
     try {
