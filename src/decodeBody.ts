@@ -1,12 +1,12 @@
-import type { NextApiRequest } from 'next';
+import type { NextRequest } from 'next/server';
 import { HttpStatusCodes, HttpError } from 'wabe-ts';
 import { Decoder } from 'ts-decoder';
 
 export const decodeBody =
   <T>(decoder: Decoder<T>) =>
-  (request: NextApiRequest): T => {
+  async (request: NextRequest): Promise<T> => {
     try {
-      return decoder(request.body);
+      return decoder(await request.json());
     } catch (innerError) {
       throw new HttpError(HttpStatusCodes.BadRequest, {
         msg: 'Error decoding body',
