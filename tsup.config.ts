@@ -10,6 +10,7 @@ export default defineConfig({
   outDir: 'dist', // Output directory
   entry: [
     'src/index.ts',
+    'src/utils.ts',
     'src/session/index.ts',
     'src/session/indexSessionCookie.ts',
     'src/session/indexSessionManager.ts',

@@ -1,6 +1,6 @@
 {
   "name": "wabe-next",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "Wabe Next.js typescript utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -55,6 +55,12 @@
       "require": "./dist/serverWorkerManager/index.js",
       "import": "./dist/serverWorkerManager/index.js",
       "default": "./dist/serverWorkerManager/index.js"
+    },
+    "./utils": {
+      "types": "./dist/utils.d.ts",
+      "require": "./dist/utils.js",
+      "import": "./dist/utils.js",
+      "default": "./dist/utils.js"
     }
   },
   "repository": {
