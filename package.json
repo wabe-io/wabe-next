@@ -1,6 +1,6 @@
 {
   "name": "wabe-next",
-  "version": "6.0.9",
+  "version": "6.1.0",
   "description": "Wabe Next.js typescript utilities",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
