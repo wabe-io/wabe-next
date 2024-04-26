@@ -7,7 +7,21 @@ import {
   useState,
 } from 'react';
 
-export const useServerAction = <T>(
+export function useServerAction<T>(
+  actionFn: () => Promise<T>,
+  params: {
+    interval?: number | undefined;
+    initialData: T;
+  },
+): {
+  data: T;
+  error: unknown;
+  setData: Dispatch<SetStateAction<T | undefined>>;
+  loadData: () => void;
+  loading: boolean;
+};
+
+export function useServerAction<T>(
   actionFn: () => Promise<T>,
   params?: {
     interval?: number | undefined;
@@ -19,7 +33,21 @@ export const useServerAction = <T>(
   setData: Dispatch<SetStateAction<T | undefined>>;
   loadData: () => void;
   loading: boolean;
-} => {
+};
+
+export function useServerAction<T>(
+  actionFn: () => Promise<T>,
+  params?: {
+    interval?: number | undefined;
+    initialData?: T;
+  },
+): {
+  data: T | undefined;
+  error: unknown;
+  setData: Dispatch<SetStateAction<T | undefined>>;
+  loadData: () => void;
+  loading: boolean;
+} {
   const interval = params?.interval;
   const initialData = params?.initialData;
   const [loading, setLoading] = useState(false);
@@ -58,4 +86,4 @@ export const useServerAction = <T>(
     loadData,
     loading,
   };
-};
+}
