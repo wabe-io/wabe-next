@@ -9,7 +9,10 @@ import {
 
 export const useServerAction = <T>(
   actionFn: () => Promise<T>,
-  interval?: number | undefined,
+  params?: {
+    interval?: number | undefined;
+    initialData?: T;
+  },
 ): {
   data: T | undefined;
   error: unknown;
@@ -17,8 +20,10 @@ export const useServerAction = <T>(
   loadData: () => void;
   loading: boolean;
 } => {
+  const interval = params?.interval;
+  const initialData = params?.initialData;
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState<T | undefined>();
+  const [data, setData] = useState<T | undefined>(initialData);
   const [error, setError] = useState<unknown>(false);
 
   const loadData = useCallback(() => {
