@@ -30,7 +30,6 @@ describe('loggedRouteHandler', () => {
     const logged = loggedRouteHandler((e) => {
       errorThrown = e;
     });
-    ``;
     const loggedHandler = logged(async () => {
       throw new HttpError(HttpStatusCodes.Forbidden, {
         msg: 'foo',
