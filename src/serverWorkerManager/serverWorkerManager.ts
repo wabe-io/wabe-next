@@ -19,12 +19,12 @@ const NEXT_RUNTIME = 'NEXT_RUNTIME';
  *    load: Loads the worker but does not start it
  *    start: Starts the worker immediately. Will take no action if it throws an error
  *
- * Worker node mode (WORKER_NODE_MODE):
- *    auto: (default) Disables general access to all routes except for "/wmgr" if at least one worker is assigned to this node
- *    mixed: Enables general access (along with "/swmgr" if at least one worker is assigned to this node)
+ * Block routes (BLOCK_ROUTES):
+ *    auto: (default) Block all routes (except for "/wmgr") if workers are provisioned
+ *    never: Does not block routes in any case
  *
  * Worker manager mode (WORKER_MANAGER_MODE):
- *    auto: (default) In DEV mode, will enable service routes and UI if at least one worker is assigned to this node. In PRODUCTION mode will disable both.
+ *    auto: (default) In DEV mode, will enable service routes and UI if at least one worker is provisioned. In PRODUCTION mode will disable both.
  *    force: Enables service routes and UI. Will not start if no workers are assigned to this node.
  *    force-svc: Enables service routes only. Will not start if no workers are assigned to this node.
  *

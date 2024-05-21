@@ -1,9 +1,9 @@
 import { ServerWorkersManifest } from './serverWorkersManifest';
 import { WorkerConfig } from './workerConfig';
 import { ManagerMode, allManagerModes } from './managerMode';
-import { NodeMode, allNodeModes } from './nodeMode';
+import { BlockRoutes, allBlockRoutes } from './nodeMode';
 import { RunMode, allRunModes } from './runMode';
-import { WORKERS, WORKER_MANAGER_MODE, WORKER_NODE_MODE } from './envConstants';
+import { WORKERS, WORKER_MANAGER_MODE, BLOCK_ROUTES } from './envConstants';
 
 const NODE_ENV = 'NODE_ENV';
 
@@ -19,13 +19,13 @@ export const parseParameters = ({
   blockManager: boolean;
   blockManagerUI: boolean;
 } => {
-  const nodeModeParam = settings[WORKER_NODE_MODE]?.trim() || ManagerMode.Auto;
+  const nodeModeParam = settings[BLOCK_ROUTES]?.trim() || BlockRoutes.Auto;
 
-  if (!(allNodeModes as string[]).includes(nodeModeParam)) {
+  if (!(allBlockRoutes as string[]).includes(nodeModeParam)) {
     throw new Error(`Worker node mode not supported: ${nodeModeParam}`);
   }
 
-  const workerNodeMode = nodeModeParam as NodeMode;
+  const workerNodeMode = nodeModeParam as BlockRoutes;
 
   const managerModeParam =
     settings[WORKER_MANAGER_MODE]?.trim() || ManagerMode.Auto;
@@ -90,7 +90,7 @@ export const parseParameters = ({
 
   return {
     config,
-    blockWeb: provisioned && workerNodeMode === NodeMode.Auto,
+    blockWeb: provisioned && workerNodeMode === BlockRoutes.Auto,
     blockManager: !provisioned || (!isDev && managerMode === ManagerMode.Auto),
     blockManagerUI:
       !provisioned ||

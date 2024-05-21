@@ -1,3 +1,3 @@
-export const WORKER_NODE_MODE = 'WORKER_NODE_MODE';
+export const BLOCK_ROUTES = 'BLOCK_ROUTES';
 export const WORKER_MANAGER_MODE = 'WORKER_MANAGER_MODE';
 export const WORKERS = 'WORKERS';

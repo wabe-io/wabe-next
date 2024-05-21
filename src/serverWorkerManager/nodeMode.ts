@@ -1,6 +1,6 @@
-export enum NodeMode {
+export enum BlockRoutes {
   Auto = 'auto',
-  Mixed = 'mixed',
+  Never = 'never',
 }
 
-export const allNodeModes = [NodeMode.Auto, NodeMode.Mixed];
+export const allBlockRoutes = [BlockRoutes.Auto, BlockRoutes.Never];
