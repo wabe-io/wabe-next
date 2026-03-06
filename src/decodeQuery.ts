@@ -8,7 +8,7 @@ export const decodeQuery =
     try {
       const url = new URL(request.url);
       const obj: { [key: string]: string } = {};
-      for (const [paramKey, paramValue] of url.searchParams) {
+      for (const [paramKey, paramValue] of Array.from(url.searchParams)) {
         obj[paramKey] = paramValue;
       }
       return decoder(obj);
